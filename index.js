@@ -1070,4 +1070,326 @@ function permutat(array){
     [array[0], array[1]] = [array[1], array[0]]
     return array
 }
-console.log(shuffleFisherYate(array));
+// console.log(shuffleFisherYate(array));
+
+
+const date11 = new Date()
+
+const day111 = date11.getTime()
+// console.log(true || false)
+
+/*
+Challenge 51
+
+"There is 1 credit card code: 1234" =>[1234]
+"I stole these 2 blue card codes : 2888 and 1952" => [2888, 1952]
+
+*/
+
+const message = "I stole these 2 blue card codes : 2888 and 1952"
+
+function extractCreditCard(message){
+    return message.split(' ').filter(elt => /\d\d\d\d/.test(elt)).map(elt => +elt)
+}
+
+function shortExtractCreditCard(message){
+    return [...message.matchAll(/\d{4}/g)].map(elt => +elt[0])
+}
+
+console.log(shortExtractCreditCard(message))
+
+// console.log(/\p{Script=Greek}/u.test('α'))
+// console.log(/\d'\d*'/.test("9''"))
+// console.log(/neighbou?r/.test('rap'))
+
+/*
+Challenge 52
+
+32px => 32
+32 rem => 32
+*/
+
+const widthPx = '32px'
+const widthRem = '32rem'
+const widthPercent = '32 %'
+
+function extractCSSValue(width){
+    return width.match(/\d{2}/g).map(elt => + elt)[0]
+}
+
+// console.log(extractCSSValue(widthRem))
+
+// const datetime = /\d{1,2}-\d{1,2}-\d{4} \d{1,2}:\d{2}/
+// console.log(datetime.test('09-02-2003 11:54'))
+
+// let cartoonCrying = /boo+(hoo+)+/i
+// console.log(cartoonCrying.test('boohoooohoohooo'))
+
+
+/*
+Challenge 53
+
+2001 => false
+2004 => true
+
+*/
+
+const yeare = 2004
+
+function isLeap(yeare){
+    if(yeare % 400 === 0  || (yeare % 4 === 0  && yeare % 100 !== 0))  return true
+    return false
+}
+
+function shortIsLeap(yeare){
+    return yeare % 400 === 0 || (yeare % 4 === 0 && yeare % 100 !== 0 )
+}
+// console.log(shortIsLeap(yeare))
+
+let match = /\d+/.exec(' one two 100')
+let matchT = 'one two 100'.match(/\d+/)
+// console.log(matchT)
+// console.log(matchT.index)
+
+/*
+Challenge 54
+
+[1, 2]  [3, 4] => [[1, 3], [2,4]]
+
+zip(arr1, arr2, arr3) => [[1, 4, 7],[2, 5, 8],[3, 6, 9]
+
+*/
+
+const ar1 = [1,34,3]
+const ar2 = [4,5,6]
+const ar3 = [7,58,9, 23]
+
+function zip(...arrays){
+    const len = [...arrays].length
+    let arr = [], add = []
+
+    for(var i = 1; i <=len ; i++){
+        let index = i
+        for(var j = i; j <i+3; j ++){
+            add = [...add, index]
+            index = index + len
+        }
+        arr = [...arr, add]
+        add = []
+    }
+
+    return arr
+
+}
+
+
+function shortZip(...arrays){
+    const len = [...arrays].length
+    const arr = [...arrays]
+
+    if(len === 1){
+        return arr
+    }
+
+    for(i = 0; i < len; i++){
+        if(arr[i].length !== arr[0].length){
+            throw new Error('The array have differents sizes.')
+        }
+    }
+
+    const arrf = arr[0].map((elt, index) =>{
+        let ar = [elt]
+        for( var i = 1; i < len; i++){
+            ar = [...ar, arr[i][index]]
+        }
+        return ar
+    })
+
+    return arrf
+
+}
+// console.log(shortZip(ar1, ar2, ar3))
+
+
+/*
+Challenge 54.
+
+['a', 'b', 'c'], [1, 2, 3] => { a:1, b:2, c:3 }
+*/
+
+const keys = ['a', 'b', 'c']
+const values = [1, 2, 3]
+
+function zipObject(keys, values){
+    return keys.reduce((acc, curr, indx) =>{return {...acc, [curr]:values[indx]}},{})
+}
+
+// console.log(zipObject(keys, values))
+
+// let quotedText = /'([^']+)'/
+// console.log(quotedText.exec("She said  'hello'"))
+// console.log(/[^\d]/.test('h'))
+// console.log(/bad(ly)?/.exec('bad'))
+// console.log(/(\d)+/.exec('123'))
+// console.log(/(?:na)+/.exec('banana'))
+
+/*
+Challenge 56
+
+Exemple
+
+"I have a cat and a dog, but I prefer dog" =>[
+    {word: "i", count: 1},
+    {word: "have", count: 1},
+    {word: "a", count: 2},
+    {word: "cat", count: 1},
+    {word: "and", count: 1},
+    {word: "dog", count: 1},
+    {word: "but", count: 1},
+    {word: "prefer", count: 1},
+    ]
+*/
+
+const paragraph = "I have a cat and a dog, but I prefer dog"
+
+function countWords(paragraph){
+
+    const paragraphArr = paragraph.split(' ')
+    const paragraphSingleArr = [...new Set(paragraphArr)]
+
+    return paragraphSingleArr.reduce((acc, curr) => { return [...acc, {word:curr, count:paragraphArr.filter(elt => elt === curr).length}]}, [])
+
+}
+
+// console.log(countWords(paragraph))
+// si tu veux souhaiter hbd a ma mere voici le numero +237 676160451
+/*
+Challenge 57
+
+Exemples
+
+"radar" => true
+"dog" => false
+*/
+
+const word = 'raar'
+
+function isPalindromeWord(word){
+    const words = [...word]
+    if(words.length % 2 === 1){
+        const wordTest = words.splice(Math.floor(word.length / 2), 1)
+        return  words.every(elt => words.indexOf(elt) + words.lastIndexOf(elt) === words.length - 1)
+    }
+    return  words.every(elt => words.indexOf(elt) + words.lastIndexOf(elt) === words.length - 1)
+
+}
+
+function shortIsPalindromeWord(word){
+    const words = [...word]
+    const len = words.length
+    const mid = Math.floor(words.length/2)
+    if(words.length % 2 === 1) return words.slice(0, mid).every((elt, indx) => elt === words.slice(mid + 1)[mid - 1 -indx])
+    return words.slice(0, mid).every((elt, indx) => elt === words.slice(mid)[mid - 1 -indx])
+}
+// console.log(shortIsPalindromeWord(word))
+
+/*
+Challenge 58
+
+"127.0.0.1" => true
+"256.0.0.1" => false
+*/
+
+const ip = "25.0.0.1"
+
+function isValidIp(ip){
+    const checkIp = (elt) =>  parseInt(elt) >= 0 && parseInt(elt) < 256
+    if(/^\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}$/.test(ip)){
+        let [_, first, second, third, four] = /(\d{1,3}).(\d{1,3}).(\d{1,3}).(\d{1,3})/.exec(ip)
+        return checkIp(first) && checkIp(second) && checkIp(third) && checkIp(four)
+    }
+    return false
+}
+// console.log(isValidIp(ip))
+
+/*
+Challenge 59
+
+'john.doe@gmail.com' => "j*******@g****.c**"
+*/
+
+const email = 'john.doe@gmail.com'
+
+function maskEmail(email){
+
+    return email[0] + Array(/^[^@]*/.exec(email)[0].length - 1 ).fill('*').join('') + '@g****.c**'
+}
+// console.log(maskEmail(email))
+
+/*
+Challenge 60
+
+[1,2,3] , 0 , 0 => 1
+[1,2,3,4,5], 0,1 =>3
+*/
+
+const arry = [ 1, 2, 3, 4, 5 ]
+const start = 0
+const end = 1
+
+function sumArrayBetweenIndexes(arry, start, end){
+    return arry.slice(start, end+1).reduce((acc, curr) => acc + curr, 0)
+}
+
+console.log(sumArrayBetweenIndexes(arry, start, end))
+
+/*
+Challenge 61
+
+['🍎'] =>{'🍎' : 1}
+['🥔','🍎', '🍎', '🧅', '🥔'] => {'🥔':2, '🍎':2, '🧅':1}
+*/
+
+const ingredients = ['🥔','🍎', '🍎', '🧅', '🥔', '🍎']
+
+function countIngredients(arr){
+    return [...new Set(arr)].reduce((acc, curr) =>{return {...acc, [curr]:arr.filter(elt => elt === curr).length}}, {})
+
+}
+
+console.log(countIngredients(ingredients))
+
+/*
+Challenge 62
+
+a(bc) =>"a"
+"Hello (world)!" => "Hello !"
+*/
+
+const text = "Hello (world)!";
+
+function cleanSpeech(text){
+    return text.replace(/[(][^)]*[)]/g, '')
+}
+
+console.log(cleanSpeech(text))
+
+
+function delays(ms){
+    return new Promise((resolve, reject) =>{
+        setTimeout(resolve({username:"stive"}), ms);
+    })
+}
+
+async function tests(){
+    try{
+    console.log('That is the first sentence')
+    await delays(5000000).then((value) => console.log('My username is', value.username))
+    console.log('The promise is completed')
+    }
+    catch(error){
+        console.log(error.message)
+    }
+}
+
+console.log(tests())
