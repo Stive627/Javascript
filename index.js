@@ -1096,7 +1096,7 @@ function shortExtractCreditCard(message){
     return [...message.matchAll(/\d{4}/g)].map(elt => +elt[0])
 }
 
-console.log(shortExtractCreditCard(message))
+// console.log(shortExtractCreditCard(message))
 
 // console.log(/\p{Script=Greek}/u.test('α'))
 // console.log(/\d'\d*'/.test("9''"))
@@ -1341,7 +1341,7 @@ function sumArrayBetweenIndexes(arry, start, end){
     return arry.slice(start, end+1).reduce((acc, curr) => acc + curr, 0)
 }
 
-console.log(sumArrayBetweenIndexes(arry, start, end))
+// console.log(sumArrayBetweenIndexes(arry, start, end))
 
 /*
 Challenge 61
@@ -1357,7 +1357,7 @@ function countIngredients(arr){
 
 }
 
-console.log(countIngredients(ingredients))
+// console.log(countIngredients(ingredients))
 
 /*
 Challenge 62
@@ -1372,7 +1372,7 @@ function cleanSpeech(text){
     return text.replace(/[(][^)]*[)]/g, '')
 }
 
-console.log(cleanSpeech(text))
+// console.log(cleanSpeech(text))
 
 
 function delays(ms){
@@ -1392,4 +1392,88 @@ async function tests(){
     }
 }
 
-console.log(tests())
+// console.log(tests())
+
+/*
+Challenge 63
+
+Exemples 
+
+"Un" => 2
+"Un deux trois" => 5
+*/
+
+const texxt = "Un deux trois"
+
+function findLongestWordLength(text){
+    return text.split(' ').sort((a, b) => b.length - a.length)[0].length
+}
+
+// console.log(findLongestWordLength(texxt))
+
+/*
+Challenge 64
+Exemples
+[1, 1, 2] => [1]
+[1, 2, 3, 2, 1] => [2, 1
+*/
+
+const arra = [1, 2, 3, 2, 1 ] 
+
+function findDuplicateNumbers(arr){
+    return [... new Set(arr)].reduce((acc, curr) => {return arr.filter((elt) => elt === curr).length > 1 ? [...acc, curr] : acc}, [])
+}
+
+// console.log(findDuplicateNumbers(arra))
+
+/*
+Challenge 65
+"abb" => 2
+"abbccc" => 3
+ */
+
+const texti = "abbcccc"
+
+function findLongestSubstring(text){
+    return [...new Set(text.split(""))].map(elt => text.split("").filter(el => el === elt).length).sort((a, b) => b - a)[0]
+}
+
+// console.log(findLongestSubstring(texti))
+
+/*
+Challenge 66
+
+"z" => 0
+"a" => 1
+"abc" => 1
+"Hello world" => 3
+*/
+
+const te = "Hello worlda"
+
+function countVowels(text){
+    const vowelArr = ['a', 'e', 'i', 'u', 'y', 'o']
+    return text.split("").reduce((acc, curr) => {return vowelArr.includes(curr)? acc + 1 : acc}, 0)
+}
+// console.log(countVowels(te))
+
+/*
+Challenge 67
+EXEMPLES
+
+delayAndSquare(2, 1000) => 4 (apres une seconde)
+delayAndSquare(3, 2000) => 9 (apres deux secondes)
+
+*/
+
+const numbr = 2
+const dly = 2000
+
+function delayAndSquare(number, delay){
+    return new Promise((resolve, reject) =>{
+        setTimeout(()=>resolve(number ** 2), delay)
+    })
+
+}
+
+console.log(delayAndSquare(numbr, dly).then((value) => console.log(value)).catch((error) => console.log('An error occured', error)))
