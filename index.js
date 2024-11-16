@@ -1477,3 +1477,13 @@ function delayAndSquare(number, delay){
 }
 
 console.log(delayAndSquare(numbr, dly).then((value) => console.log(value)).catch((error) => console.log('An error occured', error)))
+
+
+
+
+
+
+
+
+
+//Thanks so much for the journey. Tsoft....
