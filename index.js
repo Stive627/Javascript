@@ -194,10 +194,7 @@ function shortcurt(){
 //challenge 5
 const seconde = 60
 
-const secondTominute = () =>{
-    return (Math.floor(seconde / 60) + ":" + seconde % 60)
-    
-}
+const convert = (seconde) =>`${Math.floor(seconde/60)}:${seconde%60}`
 
 //challenge 6
 
@@ -1451,7 +1448,7 @@ Challenge 66
 
 const te = "Hello worlda"
 
-function countVowels(text){
+ function countVowels(text){
     const vowelArr = ['a', 'e', 'i', 'u', 'y', 'o']
     return text.split("").reduce((acc, curr) => {return vowelArr.includes(curr)? acc + 1 : acc}, 0)
 }
@@ -1469,18 +1466,16 @@ delayAndSquare(3, 2000) => 9 (apres deux secondes)
 const numbr = 2
 const dly = 2000
 
-function delayAndSquare(number, delay){
+function delayAndSquare(func, delay){
     return new Promise((resolve, reject) =>{
-        setTimeout(()=>resolve(number ** 2), delay)
+        setTimeout(() => resolve(func), delay)
     })
-
 }
 
-console.log(delayAndSquare(numbr, dly).then((value) => console.log(value)).catch((error) => console.log('An error occured', error)))
-
-
-
-
+async function navig(){
+    await navigator.clipboard.write('Stive is try to give this own best')
+    return navigator.clipboard.readText()
+}
 
 
 
