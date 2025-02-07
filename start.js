@@ -112,9 +112,97 @@
 //   }
 // console.log(shuffleFisherYates(arr))
 
-const getRandomMonth = (years) => {
-    const randomNum = Math.floor(Math.random()*11)
-    return years[randomNum]
-}
-const years = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-console.log(getRandomMonth(years))
+// const getRandomMonth = (years) => {
+//     const randomNum = Math.floor(Math.random()*11)
+//     return years[randomNum]
+// }
+// const years = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+// console.log(getRandomMonth(years))
+
+// function getWeather(arr,date){
+//     const meteoDay  = arr.reduce((a,c) => c.dt_txt.split(' ')[0] === date ? [...a, c] : a , [])
+//     if(meteoDay.length > 0){
+//         return meteoDay
+//     }
+//     return 'The weather is not available for this day.'
+// }
+// async function getWeather2(){
+//     let data
+//     var uri = 'https://geolocation-35309290975.us-central1.run.app/forecast'
+//     await fetch(uri).then((v) => v.json()).then(v => {data = v; return;}).catch(e => console.log(e))
+//     return data
+// }
+
+// console.log(getWeather2().then(v => console.log(getWeather(v.list, '2025-01-31').length)))
+// const firstDate = new Date('01/29/2025')
+// const currDate = new Date()
+// console.log(Math.floor( Math.abs(currDate - firstDate)/(1000 * 60 * 60 * 24)))
+// console.log(1000 * 60 * 60 * 24)
+
+// function getLeapYear(year){
+//     if(year % 400 === 0 || (year % 4 === 0 && year % 100 !== 0 )){
+//         return true
+//     }
+//     return false
+// }
+
+// console.log(getLeapYear(2009))
+
+// const date = new Date()
+// const month = new Intl.DateTimeFormat('fr-FR',{month:'2-digit'}).format(date)
+// console.log(typeof month)
+
+// const getSubArr = (arr, size) => {
+//    return arr.reduce((a, c) => a.slice(-1)[0].length < size ? [...a.slice(0, -1), [...a.slice(-1)[0], c]] : [...a, [c]], [[]])
+// }
+// const arrp = ['🍎','🍎','🍎','🍎','🍎','🍎']
+// console.log(getSubArr(arrp, 3))
+
+// function getHTML5DateTimeStringsFromDate(d) {
+//     let ds = d.getFullYear().toString().padStart(4, '0') + '-' + (d.getMonth()+1).toString().padStart(2, '0') + '-' + d.getDate().toString().padStart(2, '0');
+//     let ts = d.getHours().toString().padStart(2, '0') + ':' + d.getMinutes().toString().padStart(2, '0') + ':' + d.getSeconds().toString().padStart(2, '0');
+//     return [ds, ts];
+//   }
+// const udate = new Date()
+
+// console.log(getHTML5DateTimeStringsFromDate(udate))
+
+// const getCodedEmail = (email) => {
+//     return email[0] + 'gmail.com'.padStart(email.length - 1, '*')
+// }
+// const emailId = 'fossistive627@gmail.com'
+// // console.log(getCodedEmail(emailId))
+
+// // const generateRandomNumber1 = () => Math.floor(Math.random()*149 + 1)
+// // const generateRandomNumber2 = () => Math.floor(Math.random()*100)
+// // console.log(generateRandomNumber1(), generateRandomNumber2())
+
+// const data = [ 
+//     [undefined, undefined, undefined, '01','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31',undefined],
+//     [undefined, undefined, undefined, undefined,undefined,undefined,'01','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28',undefined],
+//     [undefined, undefined, undefined, undefined,undefined,undefined,'01','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31',undefined,undefined,undefined,undefined,undefined],
+//     [undefined, undefined, '01', '02','03','04','05','06','07','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30',undefined,undefined,undefined],
+//     [undefined, undefined, undefined, undefined,'01','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31'],
+//     ['01', '02', '03', '04','05','06','07','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30',undefined,undefined,undefined,undefined,undefined],
+//     [undefined, undefined,'01','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31',undefined,undefined],
+//     [undefined, undefined, undefined, undefined,undefined,'01','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31',undefined,undefined,undefined,undefined,undefined,undefined],
+//     [undefined, '01', '02', '03','04','05','06','07','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30',undefined,undefined,undefined,undefined],
+//     [undefined, undefined, undefined, '01','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31',undefined],
+//     [undefined, undefined, undefined, undefined,undefined,undefined,'01','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30',undefined,undefined,undefined,undefined,undefined,undefined],
+//     [undefined, '01', '02', '03','04','05','06','07','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31',undefined,undefined,undefined],
+// ]
+
+// for(var i = 0; i < data.length; i ++){
+//     console.log(data[i].length)
+// }
+
+// const checkSubset = (a1,a2) => {
+//     return a1.every(elt => a2.includes(elt)) || a2.every(elt => a1.includes(elt))
+// }
+// const a1 = ['a', 'b', 'c']
+// const a2 = ['a','d']
+// console.log(checkSubset(a1, a2))
+
+const newSkills = {name:'stive', uid:'24MCI10053', getPresentation:(name)=>console.log(`Hi, ${name}`)}
+// console.log(newSkills.name)
+newSkills.getPresentation('Stive')
