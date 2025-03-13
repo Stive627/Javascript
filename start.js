@@ -203,6 +203,9 @@
 // const a2 = ['a','d']
 // console.log(checkSubset(a1, a2))
 
-const newSkills = {name:'stive', uid:'24MCI10053', getPresentation:(name)=>console.log(`Hi, ${name}`)}
-// console.log(newSkills.name)
-newSkills.getPresentation('Stive')
+// const newSkills = {name:'stive', uid:'24MCI10053', getPresentation:(name)=>console.log(`Hi, ${name}`)}
+// // console.log(newSkills.name)
+// newSkills.getPresentation('Stive')
+const message = "I stole these  2 blue card codes : 2888 and 1952"
+const arr = [...message.matchAll(/\d/g)]
+console.log(arr)
