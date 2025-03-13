@@ -206,6 +206,52 @@
 // const newSkills = {name:'stive', uid:'24MCI10053', getPresentation:(name)=>console.log(`Hi, ${name}`)}
 // // console.log(newSkills.name)
 // newSkills.getPresentation('Stive')
-const message = "I stole these  2 blue card codes : 2888 and 1952"
-const arr = [...message.matchAll(/\d/g)]
-console.log(arr)
+// const message = "I stole these  2 blue card codes : 2888 and 1952"
+// const arr = [...message.matchAll(/\d/g)]
+// // console.log(arr)
+
+// const getUnit = (unit) => {
+//     return +/\d+/.exec(unit)[0]
+// }
+// console.log(getUnit('32px'))
+
+// const getBissextileYear = (year) => {
+//     if(year%400 === 0 || (year%4 === 0 && year%100 !== 0)){
+//         return true
+//     }
+//     return false
+// }
+// let arr = []
+// for(i=0; i <1000; i++){
+//     arr = [...arr, i]
+// }
+
+// // console.log(arr.filter(elt =>getBissextileYear(elt)))
+
+// function outer(){
+//     const presentation = 'My name is STIVE'
+//     function inner(){
+//         console.log(presentation)
+//     }
+//     return inner
+// }
+// const closure = outer()
+// closure()
+// let var1 = 'stive'
+// function presentation(){
+//     let var1 = 'Arnaud'
+//     return var1
+// }
+// console.log(presentation())
+
+
+
+// function generateDigit(){
+//     return Math.floor(Math.random()*(999999-100000) + 100000)
+// }
+// console.log(generateDigit())
+// console.log(arr.find(elt => elt === 8))
+// console.log(arr.filter(elt => elt%2 ===1))
+const arr = [2,41, 5, 8, 9]
+const result = arr.splice(1, 1)
+console.log(result)
