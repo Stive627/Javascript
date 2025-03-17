@@ -252,6 +252,33 @@
 // console.log(generateDigit())
 // console.log(arr.find(elt => elt === 8))
 // console.log(arr.filter(elt => elt%2 ===1))
-const arr = [2,41, 5, 8, 9]
-const result = arr.splice(1, 1)
-console.log(result)
+// const arr = [2,41, 5, 8, 9]
+// const result = arr.splice(1, 1)
+// console.log(result)
+// function display(){
+//     const arr = ['4444444', '43333334', '4322234']
+//     for(i=0; i < arr.length -1 ; i++){
+//         console.log(arr[i])
+//     }
+// }
+// console.log(display())
+
+// function deleteDuplicate(arr){
+//     let newArr = []
+//     for(i=0; i<arr.length; i++){
+//         if(!newArr.includes(arr[i])){
+//             newArr = [...newArr, arr[i]]
+//         }
+//     }
+//     return newArr
+// }
+// console.log(...deleteDuplicate(['monday', 'sunday', 'monday', 'wednesday', 'thursday']))
+
+function zipArr(arr1, arr2, arr3){
+    let result = []
+    for(i=0; i<arr1.length; i++){
+        result = [...result, [arr1[i], arr2[i], arr3[i]]]
+    }
+    return result
+}
+console.log(zipArr([1,2,3],[4,5,6],[7,8,9]))

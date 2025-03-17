@@ -3,22 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form Submission</title>
+    <title>Form Validation</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .form-container {
+            width: 33%;
+            margin: auto;
+            margin-top: 50px;
+        }
+    </style>
 </head>
 <body>
-    <h2>Enter Your Details</h2>
+    <div class="container">
+        <div class="form-container">
+            <h2 class="text-center">Registration Form</h2>
+            <form id="registrationForm" class="needs-validation" novalidate>
+                <div class="mb-3">
+                    <label for="phone" class="form-label">Phone Number</label>
+                    <input type="text" class="form-control" id="phone" required>
+                    <div class="invalid-feedback">Phone number must be exactly 10 digits.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" required>
+                    <div class="invalid-feedback">Email must be a valid @gmail.com address.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" required>
+                    <div class="invalid-feedback">Password must contain uppercase, lowercase, and a special character.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="confirmPassword" class="form-label">Confirm Password</label>
+                    <input type="password" class="form-control" id="confirmPassword" required>
+                    <div class="invalid-feedback">Passwords do not match.</div>
+                </div>
+                <button type="submit" class="btn btn-primary w-100" id="submitBtn" disabled>Submit</button>
+            </form>
+        </div>
+    </div>
 
-    <form action="NewServlet" method="POST">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required><br><br>
+    <script>
+        function validateInput(input, pattern) {
+            const value = input.value.trim();
+            if (!pattern.test(value)) {
+                input.classList.add("is-invalid");
+                return false;
+            } else {
+                input.classList.remove("is-invalid");
+                return true;
+            }
+        }
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required><br><br>
+        function validateConfirmPassword() {
+            const password = document.getElementById("password").value.trim();
+            const confirmPassword = document.getElementById("confirmPassword").value.trim();
+            const confirmPasswordField = document.getElementById("confirmPassword");
 
-        <label for="age">Age:</label>
-        <input type="number" id="age" name="age" required><br><br>
+            if (confirmPassword !== password) {
+                confirmPasswordField.classList.add("is-invalid");
+                return false;
+            } else {
+                confirmPasswordField.classList.remove("is-invalid");
+                return true;
+            }
+        }
 
-        <button type="submit">Submit</button>
-    </form>
+        function checkFormValidity() {
+            const phoneField = document.getElementById("phone");
+            const emailField = document.getElementById("email");
+            const passwordField = document.getElementById("password");
+            const confirmPasswordField = document.getElementById("confirmPassword");
+
+            // Clear all validation messages first
+            phoneField.classList.remove("is-invalid");
+            emailField.classList.remove("is-invalid");
+            passwordField.classList.remove("is-invalid");
+            confirmPasswordField.classList.remove("is-invalid");
+
+            if (!validateInput(phoneField, /^\d{10}$/)) return;
+            if (!validateInput(emailField, /^[a-zA-Z0-9._%+-]+@gmail\.com$/)) return;
+            if (!validateInput(passwordField, /^(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).{6,}$/)) return;
+            if (!validateConfirmPassword()) return;
+
+            // If all fields are valid, enable the submit button
+            document.getElementById("submitBtn").disabled = false;
+        }
+
+        // Attach event listeners
+        document.getElementById("phone").addEventListener("input", checkFormValidity);
+        document.getElementById("email").addEventListener("input", checkFormValidity);
+        document.getElementById("password").addEventListener("input", checkFormValidity);
+        document.getElementById("confirmPassword").addEventListener("input", checkFormValidity);
+
+        document.getElementById("registrationForm").addEventListener("submit", function(event) {
+            checkFormValidity();
+            if (document.getElementById("submitBtn").disabled) {
+                event.preventDefault();
+                alert("Please correct the error before submitting.");
+            } else {
+                alert("Form submitted successfully!");
+            }
+        });
+    </script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
