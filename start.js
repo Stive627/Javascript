@@ -274,11 +274,42 @@
 // }
 // console.log(...deleteDuplicate(['monday', 'sunday', 'monday', 'wednesday', 'thursday']))
 
-function zipArr(arr1, arr2, arr3){
-    let result = []
-    for(i=0; i<arr1.length; i++){
-        result = [...result, [arr1[i], arr2[i], arr3[i]]]
-    }
-    return result
-}
-console.log(zipArr([1,2,3],[4,5,6],[7,8,9]))
+// function zipArr(arr1, arr2, arr3){
+//     let result = []
+//     for(i=0; i<arr1.length; i++){
+//         result = [...result, [arr1[i], arr2[i], arr3[i]]]
+//     }
+//     return result
+// }
+// console.log(zipArr([1,2,3],[4,5,6],[7,8,9]))
+
+// function sanitizeUrl(url){
+//     return url.replaceAll('\\', '/')
+// }
+// function sanitizeMedias(medias){
+//     return medias.map((elt, indx) =>({...elt, url:sanitizeUrl(elt.url)}))
+// }
+// console.log(sanitizeMedias([{"_id":"67c7706db275e8a0b14d8a85","url":"public\\medias\\WhatsApp Image 2025-03-04 at 10.06.06 PM.jpeg","category":"Peinture","createdAt":"2025-03-04T21:28:13.562Z","updatedAt":"2025-03-04T21:28:13.562Z","__v":0},{"_id":"67c833bc6f3af99ade101a89","url":"public\\medias\\Screenshot 2025-03-04 170621.png","category":"Peinture","createdAt":"2025-03-05T11:21:32.780Z","updatedAt":"2025-03-05T11:21:32.780Z","__v":0},{"_id":"67c838996f3af99ade101ab2","url":"public\\medias\\Screenshot 2025-03-01 213742.png","category":"Peinture","createdAt":"2025-03-05T11:42:17.156Z","updatedAt":"2025-03-05T11:42:17.156Z","__v":0},{"_id":"67c838b46f3af99ade101ab8","url":"public\\medias\\Screenshot 2025-03-01 182051.png","category":"Decoration","createdAt":"2025-03-05T11:42:44.859Z","updatedAt":"2025-03-05T11:42:44.859Z","__v":0},{"_id":"67c838e26f3af99ade101abe","url":"public\\medias\\Screenshot 2025-03-01 213749.png","category":"Placoplatre","createdAt":"2025-03-05T11:43:30.392Z","updatedAt":"2025-03-05T11:43:30.392Z","__v":0}]))
+// import axios from 'axios'
+// const getObj = async() => {
+//     try {
+//         const data = (await axios({url:'https://blackgoldbackend.tsasoft.com/products', method:'GET', headers:{'Content-Type':'appication/json'}})).data
+//         console.log(data)
+//     } catch (error) {
+//         console.error(error)
+//     }
+// }
+// console.log(getObj()) 
+// var fist;
+// let name1;
+// const name2 = 'John';
+// fist = 'Hi stive'
+// console.log([1,2] instanceof Array)
+// const arr1 = ['monday', 'tuesday', 'wednesday']
+// const arr2 = ['friday', 'wednesday', 'sunday']
+// const arr3 = [1, 2, 3]
+//  arr3[2] = 'MOnday' 
+// // console.log(arr1.filter((val, indx) => arr2.includes(val)))
+// console.log(arr3)
+const checkValidUserName = (email) => /@(uiux|webdev|mobdev|ai)$/.test(email)
+console.log(checkValidUserName('sue@ai'))
